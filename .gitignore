@@ -1,0 +1,40 @@
+# ─── Secrets / environment (NEVER commit real secrets) ───
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+*-credentials.json
+*serviceAccount*.json
+.npmrc
+
+# ─── Dependencies ───
+node_modules/
+
+# ─── Build output ───
+dist/
+build/
+dist-ssr/
+
+# ─── Logs & caches ───
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+coverage/
+.nyc_output/
+.cache/
+
+# ─── OS / editor junk ───
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

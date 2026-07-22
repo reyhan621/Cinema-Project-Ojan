@@ -1,0 +1,54 @@
+services:
+  mongodb:
+    image: mongo:8
+    container_name: cinema-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - cinema-mongodb-data:/data/db
+    networks:
+      - cinema-network
+
+  backend:
+    build:
+      context: ./Cinema-Booking-Backend
+      dockerfile: Dockerfile
+    image: cinema-backend:1.0
+    container_name: cinema-backend
+    restart: unless-stopped
+    ports:
+      - "5001:5001"
+    environment:
+      NODE_ENV: production
+      PORT: 5001
+      MONGO_URI: mongodb://mongodb:27017/cinema_booking
+      JWT_SECRET: ${JWT_SECRET}
+      CLIENT_URL: http://localhost:5173
+    depends_on:
+      - mongodb
+    networks:
+      - cinema-network
+
+  frontend:
+    build:
+      context: ./Cinema-Booking-Frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: http://localhost:5001/api
+    image: cinema-frontend:1.0
+    container_name: cinema-frontend
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    networks:
+      - cinema-network
+
+volumes:
+  cinema-mongodb-data:
+
+networks:
+  cinema-network:
+    driver: bridge

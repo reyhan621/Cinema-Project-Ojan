@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build output (generated — must not be committed)
+dist/
+dist-ssr/
+*.local
+
+# Environment / secrets
+# NOTE: Vite inlines VITE_* vars into the client bundle — they are PUBLIC.
+# Never put secrets (DB URI, JWT secret, API keys) in VITE_* variables.
+.env
+.env.*
+!.env.example
+
+# Logs & caches
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

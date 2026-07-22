@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Environment / secrets (only .env.example may be committed)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Logs & caches
+*.log
+npm-debug.log*
+coverage/
+.nyc_output/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Uploaded files (generated at runtime)
+uploads/posters/*
+!uploads/posters/.gitkeep
